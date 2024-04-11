@@ -8,7 +8,7 @@ services:
         ports:
             - 50080:80
         volumes:
-            - /srv/docker-container-files/organizr:/config
+            - /srv/docker/organizr:/config
         environment:
             - PUID=1000
             - PGID=999
