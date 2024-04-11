@@ -1,0 +1,13 @@
+version: '3.6'
+
+services:
+  trilium:
+    image: zadam/trilium:0.52-latest
+    container_name: trilium
+    volumes:
+      - trilium-data:/app/data
+    ports:
+      - 58080:8080
+    environment:
+      TZ: Europe/Amsterdam
+    restart: unless-stopped
