@@ -1,0 +1,32 @@
+version: "3.7"
+services:
+  audiobookshelf:
+    container_name: audiobookshelf
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - 13378:80
+    volumes:
+      - /mnt/books/audiobooks/:/audiobooks
+      - /mnt/books/podcasts:/podcasts
+      - /srv/audiobookshelf/config:/config
+      - /srv/audiobookshelf/metadata:/metadata
+    environment:
+      TZ: Europe/Amsterdam
+      PUID: 1000
+      PGID: 996
+  
+  calibre-web:
+    image: lscr.io/linuxserver/calibre-web:latest
+    container_name: calibre-web
+    environment:
+      PUID: 1000
+      PGID: 996
+      TZ: Europe/Amsterdam
+      DOCKER_MODS: "linuxserver/mods:universal-calibre|linuxserver/mods:calibre-web-dtrpg-metadata" #optional
+      OAUTHLIB_RELAX_TOKEN_SCOPE: 1 #optional
+    volumes:
+      - /srv/calibre-web:/config
+      - /mnt/books/books:/books
+    ports:
+      - 8083:8083
+    restart: unless-stopped
