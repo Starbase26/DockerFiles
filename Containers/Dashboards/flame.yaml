@@ -15,3 +15,4 @@ services:
       - PASSWORD=flame_password
       - PASSWORD_FILE=/run/secrets/password # optional but required for (1)
     restart: unless-stopped
+ 

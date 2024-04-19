@@ -19,4 +19,4 @@ services:
         TZ: Europe/Amsterdam
         PMM_RUN: true
       volumes:
-        - /srv/storage/plex-meta-manager:/config
+        - /srv/storage/plex-meta-manager:/config 
