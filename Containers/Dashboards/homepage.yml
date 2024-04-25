@@ -7,4 +7,5 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - /srv/dashboard/homepage:/app/config # Make sure your local config directory exists
+      - /srv/dashboard/homepage/config:/app/config # Make sure your local config directory exists
+      - /srv/dashbaord/homepage/images:/app/images
