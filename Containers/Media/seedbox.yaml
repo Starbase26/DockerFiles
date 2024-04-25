@@ -13,7 +13,7 @@ services:
       DELUGE_LOG_LEVEL: info
     volumes:
       - /srv/seedbox/deluge:/config
-      - /srv/downloads:/downloads
+      - /torrents:/downloads
     ports:
       - 8112:8112
       - 6881:6881
@@ -30,7 +30,7 @@ services:
     volumes:
       - /srv/seedbox/sonarr:/config
       - /mnt/tv:/tv
-      - /srv/downloads:/downloads
+      - /torrents:/downloads
       - /mnt/torrents:/mnt/torrents
     ports:
       - 8989:8989
@@ -46,7 +46,7 @@ services:
     volumes:
       - /srv/seedbox/radarr:/config
       - /mnt/films/1080p/:/films
-      - /srv/downloads:/downloads
+      - /torrents:/downloads
       - /mnt/torrents:/mnt/torrents
     ports:
       - 7878:7878
@@ -66,7 +66,7 @@ services:
       TZ: Europe/Amsterdam
     volumes:
       - /srv/seedbox/prowlarr:/config
-      - /srv/downloads/watched:/downloads  # transmission watch directory
+      - /torrents/watched:/downloads  # transmission watch directory
   
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
