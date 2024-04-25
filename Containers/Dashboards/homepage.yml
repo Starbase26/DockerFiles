@@ -9,3 +9,6 @@ services:
     volumes:
       - /srv/dashboard/homepage/config:/app/config # Make sure your local config directory exists
       - /srv/dashbaord/homepage/images:/app/images
+    environment:
+      PUID: 1000
+      PGID: 996
