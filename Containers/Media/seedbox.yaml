@@ -1,4 +1,4 @@
-# Seedbox
+# servarr
 ---
 version: "3.7"
 
@@ -13,8 +13,8 @@ services:
       TZ: Europe/Amsterdam
       DELUGE_LOG_LEVEL: info
     volumes:
-      - /srv/seedbox/deluge:/config
-      - /torrents:/downloads
+      - /srv/servarr/deluge:/config
+      - /srv/downloads:/downloads
     ports:
       - 8112:8112
       - 6881:6881
@@ -29,9 +29,9 @@ services:
       PGID: 996
       TZ: Europe/Amsterdam
     volumes:
-      - /srv/seedbox/sonarr:/config
+      - /srv/servarr/sonarr:/config
       - /mnt/tv:/tv
-      - /torrents:/downloads
+      - /srv/downloads:/downloads
       - /mnt/torrents:/mnt/torrents
     ports:
       - 8989:8989
@@ -45,9 +45,9 @@ services:
       PGID: 996
       TZ: Europe/Amsterdam
     volumes:
-      - /srv/seedbox/radarr:/config
+      - /srv/servarr/radarr:/config
       - /mnt/films/1080p/:/films
-      - /torrents:/downloads
+      - /srv/downloads:/downloads
       - /mnt/torrents:/mnt/torrents
     ports:
       - 7878:7878
@@ -66,7 +66,7 @@ services:
       PGID: 996
       TZ: Europe/Amsterdam
     volumes:
-      - /srv/seedbox/prowlarr:/config
+      - /srv/servarr/prowlarr:/config
       - /torrents/watched:/downloads  # transmission watch directory
   
   flaresolverr:
