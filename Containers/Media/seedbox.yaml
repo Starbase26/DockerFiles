@@ -80,3 +80,15 @@ services:
     ports:
       - ${PORT:-8191}:8191
     restart: unless-stopped 
+
+  maintainerr:
+    image: ghcr.io/jorenn92/maintainerr:latest
+    container_name: maintainerr
+    user: 1000:996
+    volumes: 
+      - /srv/maintainerr:/opt/data
+    environment:
+      TZ: Europe/Amsterdam
+    ports:
+      - 6246:6246
+    restart: unless-stopped
