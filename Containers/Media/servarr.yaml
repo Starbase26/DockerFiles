@@ -8,13 +8,13 @@ services:
     image: lscr.io/linuxserver/deluge:latest
     container_name: deluge
     environment:
-      PUID: 1000
-      PGID: 996
+      PUID: 1026
+      PGID: 100
       TZ: Europe/Amsterdam
       DELUGE_LOG_LEVEL: info
     volumes:
-      - /srv/servarr/deluge:/config
-      - /srv/downloads:/downloads
+      - /volume2/docker/servarr/deluge:/config
+      - /volume2/torrents:/downloads
     ports:
       - 8112:8112
       - 6881:6881
@@ -25,14 +25,13 @@ services:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
     environment:
-      PUID: 1000
-      PGID: 996
+      PUID: 1026
+      PGID: 100
       TZ: Europe/Amsterdam
     volumes:
-      - /srv/servarr/sonarr:/config
-      - /mnt/tv:/tv
-      - /srv/downloads:/downloads
-      - /mnt/torrents:/mnt/torrents
+      - /volume2/docker/servarr/sonarr:/config
+      - /volume4/tv:/tv
+      - /volume2/torrents:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -41,14 +40,13 @@ services:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
     environment:
-      PUID: 1000
-      PGID: 996
+      PUID: 1026
+      PGID: 100
       TZ: Europe/Amsterdam
     volumes:
-      - /srv/servarr/radarr:/config
-      - /mnt/films/1080p/:/films
-      - /srv/downloads:/downloads
-      - /mnt/torrents:/mnt/torrents
+      - /volume2/docker/servarr/radarr:/config
+      - /volume4/films/1080p:/films
+      - /volume2/torrents:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -62,12 +60,12 @@ services:
     cap_add:
       - NET_ADMIN
     environment:
-      PUID: 1000
-      PGID: 996
+      PUID: 1026
+      PGID: 100
       TZ: Europe/Amsterdam
     volumes:
-      - /srv/servarr/prowlarr:/config
-      - /torrents/watched:/downloads  # transmission watch directory
+      - /volume2/docker/servarr/prowlarr:/config
+      - /volume2/torrents/watch_folder:/downloads
   
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
@@ -84,9 +82,9 @@ services:
   maintainerr:
     image: ghcr.io/jorenn92/maintainerr:latest
     container_name: maintainerr
-    user: 1000:996
+    user: 1026:100
     volumes: 
-      - /srv/maintainerr:/opt/data
+      - /volume2/docker/servarr/maintainerr:/opt/data
     environment:
       TZ: Europe/Amsterdam
     ports:
