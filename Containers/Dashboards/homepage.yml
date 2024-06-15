@@ -7,9 +7,9 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - /srv/dashboard/homepage/config:/app/config # Make sure your local config directory exists
-      - /srv/dashboard/homepage/images:/app/public/images
-      - /srv/dashboard/homepage/icons:/app/public/icons
+      - /volume2/docker/dashboard/homepage/config:/app/config # Make sure your local config directory exists
+      - /volume2/docker/dashboard/homepage/images:/app/public/images
+      - /volume2/docker/dashboard/homepage/icons:/app/public/icons
     environment:
-      PUID: 1000
-      PGID: 996
+      PUID: 1031
+      PGID: 100
